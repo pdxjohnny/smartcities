@@ -4,6 +4,7 @@
   <link rel="stylesheet" href="css/font-awesome.min.css">
   <script src="js/jquery-1.11.3.js"></script>
   <script src="js/bootstrap.js"></script>
+  <script src="js/chart.js"></script>
   <title>Smartcities -- Portland</title>
 </head>
 
@@ -45,8 +46,32 @@ src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Powell%20Boulevard
     </div>
   </div>
 
-</div>
+
    
+
+<div id="recommender" width="600">
+    <!-- Title and overall score -->
+    <div class = "row">
+        <div class="col-md-6" id="title">Crime Report</div>
+        <div id="score_o">N/N</div>        
+    </div>
+    
+    <!-- Description -->
+    <div class="row">
+        <p> 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+    
+    <!-- Stacked Graph -->
+    <div class="row">
+        <div id="columnchart_material" style="width: 900px; height: 200px;"></div>        
+    </div>
+
+</div>
+
+</div>
+
 </body>
 
 </html>
