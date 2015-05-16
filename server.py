@@ -1,10 +1,15 @@
 import os
 import json
+import argparse
 import tornado.ioloop
 import tornado.web
 import traceback
 
 import calc
+
+__version__ = "0.0.1"
+__description__ = "GuardJog server to calculate results"
+
 
 DIRECTORY = os.path.join(os.path.dirname(__file__))
 INDEX_PAGE = "site/index.html"
@@ -90,7 +95,7 @@ class SC_Server(tornado.web.Application):
     def __init__(self):
         # The settings that tell how to server the static files
         settings = {
-            "static_path": os.path.join(DIRECTORY, "site"),
+            "static_path": os.path.join(os.path.dirname(__file__), "site"),
             "cookie_secret": "KNSDF23HRGBBE8D",
             "xsrf_cookies": True,
         }
@@ -105,13 +110,33 @@ class SC_Server(tornado.web.Application):
         super(SC_Server, self).__init__(handlers, **settings)
 
 
-def start():
+def start(port=DEFUALT_PORT, key=False, crt=False):
     application = SC_Server()
-    application.listen(DEFUALT_PORT)
+    application.listen(port)
+    print "Serving on port", port
     tornado.ioloop.IOLoop.instance().start()
 
+
+def arg_setup():
+    arg_parser = argparse.ArgumentParser(description=__description__)
+    arg_parser.add_argument("--port", "-p", type=int, \
+        help="Port to host or connect to GuardJog server")
+    arg_parser.add_argument("--key", "-k", type=unicode, \
+        help="Key file to use")
+    arg_parser.add_argument("--crt", "-c", type=unicode, \
+        help="Cert file to use")
+    arg_parser.add_argument("--version", "-v", action="version", \
+        version=u"GuardJog " + unicode(__version__) )
+    initial = vars(arg_parser.parse_args())
+    args = {}
+    for arg in initial:
+        if initial[arg]:
+            args[arg] = initial[arg]
+    return args
+
 def main():
-    start()
+    args = arg_setup()
+    start(**args)
     return 0
 
 if __name__ == "__main__":
