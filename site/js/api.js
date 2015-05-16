@@ -137,11 +137,25 @@ sc_api.prototype.getJSON = function(url, callback)
     this.get(url, json_callback);
 }
 
-sc_api.prototype.data = function(set_name, callback, query)
+sc_api.prototype.raw_data = function(set_name, callback, query)
 {
     var url = this.data_ids[set_name] + this.get_query_string(query);
-    console.log(url)
     this.getJSON(url, callback);
+}
+
+sc_api.prototype.data = function(score, time, station, callback)
+{
+    var query = {
+        "score": score,
+        "time": time,
+        "station": station
+    };
+    var url = "/api/" + this.get_query_string(query);
+    var json_callback = function (un_parsed)
+    {
+        callback( JSON.parse( un_parsed ) );
+    }
+    this._get(url, json_callback);
 }
 
 sc_api.prototype.get_query_string = function(obj)
@@ -161,5 +175,6 @@ sc_api.prototype.get_query_string = function(obj)
 }
 
 // var api = new sc_api("pdx")
-// api.data("DEQ Export", function (data) { console.log(data); }, {"limit": 100} );
+// api.raw_data("DEQ Export", function (data) { console.log(data); }, {"limit": 100} );
+// api.data("crime", false, false, function (data) { console.log(data); } );
 
