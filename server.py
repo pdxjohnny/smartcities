@@ -23,8 +23,11 @@ class EntryHandler(BaseHandler):
         station = self.get_argument('station', False)
         time = self.get_argument('time', False)
         if score:
-            result.update( getattr(calc, score)(station, time) )
-            result["OK"] = True
+            try:
+                result.update( getattr(calc, score)(station, time) )
+                result["OK"] = True
+            except Exception, error:
+                result["ERROR"] = unicode(error)
         result = json.dumps(result)
         self.write(unicode(result))
 
