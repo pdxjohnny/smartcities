@@ -1,4 +1,7 @@
-GuardJog
+<h1>GuardJog</h1>
+---
+
+Server
 ---
 
 To install / run server
