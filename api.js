@@ -159,3 +159,7 @@ sc_api.prototype.get_query_string = function(obj)
     }
     return str;
 }
+
+// var api = new sc_api("pdx")
+// api.data("DEQ Export", function (data) { console.log(data); }, {"limit": 100} );
+
