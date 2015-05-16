@@ -2,7 +2,7 @@ from api import *
 import sys
 import re
 
-stations = [103052, 102082, 105082];
+stations = [103052, 102082, 105082, 200004, 200005, 200003, 200002, 200001, 104082, 101021, 101042, 101054, 101077, 101008, 200205, 200206, 200209, 200210, 123082];
 
 
 def getCrimeData(stationID):
@@ -67,7 +67,7 @@ def getCrimeData(stationID):
 
 
 def crime(location, time):
-	stationID = stations[int(location)];
+	stationID = stations[int(location) % 19];
 	results = getCrimeData(stationID);
 	return {
 		"morning" : {
@@ -84,8 +84,16 @@ def crime(location, time):
 			}
 		} #score
 
+def stations():
+	smart = api("pdx")
+	stationList = smart.data("Air Quality", {"limit": 10000})
+	for i in xrange(0, len(stationList)):
+		if stationList[i]["epa_station_key"] == 410510080:
+			print stationList[i]["wind_speed"], " ", stationList[i]["_updated_at"]
+
+
 def main():
-	crime(2, 1)
+	crime(1, 0)
 
 if __name__ == '__main__':
 	main()
