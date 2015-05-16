@@ -16,33 +16,25 @@ def getCrimeData():
 	for i in xrange(0, len(results)):
 		#if results[i]["X Coordinate"] <= 42.996 and results[i]["X Coordinate"] >= 42.796 and results[i]["Y Coordinate"] >= -122.236 and results[i]["Y Coordinate"] <= -122.036:
 		count += 1;
-		if int(results[i]["Report Time"][:2]) < 8 or int(results[i]["Report Time"][:2]) >= 19:
-			if "Assault" in results[i]["Major Offense Type"] or \
+		if "Assault" in results[i]["Major Offense Type"] or \
 			"Homicide" in results[i]["Major Offense Type"] or \
 			"Rape" in results[i]["Major Offense Type"] or \
 			"Kidnap" in results[i]["Major Offense Type"] or \
 			"Robbery" in results[i]["Major Offense Type"] or \
 			"Arson" in results[i]["Major Offense Type"]:
-				nightV += 1;
-			else: nightNV += 1
-		if int(results[i]["Report Time"][:2]) <= 12 and int(results[i]["Report Time"][:2]) >= 8:
-			if "Assault" in results[i]["Major Offense Type"] or \
-			"Homicide" in results[i]["Major Offense Type"] or \
-			"Rape" in results[i]["Major Offense Type"] or \
-			"Kidnap" in results[i]["Major Offense Type"] or \
-			"Robbery" in results[i]["Major Offense Type"] or \
-			"Arson" in results[i]["Major Offense Type"]:
+			if int(results[i]["Report Time"][:2]) < 8 or int(results[i]["Report Time"][:2]) >= 19:
+				nightV += 1
+			if int(results[i]["Report Time"][:2]) <= 12 and int(results[i]["Report Time"][:2]) >= 8:
 				morningV += 1;
-			else: morningNV += 1
-		if int(results[i]["Report Time"][:2]) < 19 and int(results[i]["Report Time"][:2]) > 12:
-			if "Assault" in results[i]["Major Offense Type"] or \
-			"Homicide" in results[i]["Major Offense Type"] or \
-			"Rape" in results[i]["Major Offense Type"] or \
-			"Kidnap" in results[i]["Major Offense Type"] or \
-			"Robbery" in results[i]["Major Offense Type"] or \
-			"Arson" in results[i]["Major Offense Type"]:
+			if int(results[i]["Report Time"][:2]) < 19 and int(results[i]["Report Time"][:2]) > 12:
 				afternoonV += 1;
-			else: afternoonNV += 1
+		else:
+			if int(results[i]["Report Time"][:2]) < 8 or int(results[i]["Report Time"][:2]) >= 19:
+				nightNV += 1
+			if int(results[i]["Report Time"][:2]) <= 12 and int(results[i]["Report Time"][:2]) >= 8:
+				morningNV += 1;
+			if int(results[i]["Report Time"][:2]) < 19 and int(results[i]["Report Time"][:2]) > 12:
+				afternoonNV += 1;
 		#print results[i]["Report Time"]
 	print "total:    ", count
 	print "           V - NV"
