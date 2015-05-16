@@ -5,18 +5,6 @@ import tornado.web
 
 import calc
 
-calc_methods = [method for method in dir(calc) if callable(getattr(calc, method))]
-
-calc_score = {}
-i = 0
-for method in calc_methods:
-    calc_score[method] = getattr(calc, method)
-    i += 1
-
-def test(station, time):
-    return {"test": "hello test", "station": station, "time": time}
-
-calc_score["test"] = test
 
 class BaseHandler(tornado.web.RequestHandler):
     def user(self):
@@ -35,7 +23,7 @@ class EntryHandler(BaseHandler):
         station = self.get_argument('station', False)
         time = self.get_argument('time', False)
         if score:
-            result.update( calc_score[score](station, time) )
+            result.update( getattr(calc, score)(station, time) )
             result["OK"] = True
         result = json.dumps(result)
         self.write(unicode(result))
