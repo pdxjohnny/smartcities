@@ -7,16 +7,22 @@ Server
 To install / run server
 
 Make sure you have Python >= 2.7.6
-If on windows not "sudo -HE"
+If on windows dont use "sudo -HE"
 
-Make sure you have pip
-download: https://bootstrap.pypa.io/get-pip.py
-run: sudo -HE python /path/to/get-pip.py
+Make sure you have pip: download abd run https://bootstrap.pypa.io/get-pip.py
+```bash
+wget https://bootstrap.pypa.io/get-pip.py
+sudo -HE python /path/to/get-pip.py
+```
+Make sure you have tornado.
 
-Make sure you have tornado: sudo -HE pip install tornado
-
-Run the server: sudo python server.py --port 80
-
+```bash
+sudo -HE pip install tornado
+```
+Run the server.
+```bash
+sudo python server.py --port 80
+```
 Go to localhost to access the webserver
 
 JS API
