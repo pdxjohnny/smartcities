@@ -1,11 +1,33 @@
 from api import *
 import sys
+import re
+
+GET_SIZE = 1000000
+stations_array = [103052, 102082, 105082, 200004, 200005, 200003, 200002, 200001, 104082, 101021, 101042, 101054, 101077, 101008, 200205, 200206, 200209, 200210, 123082];
 
 
-def getCrimeData():
+def getCrimeData(stationID):
 	smart = api("pdx")
-	results = smart.data("PDX Crime Data 2013", {"limit": 100})
-	print len(results)
+	stationX = 0;
+	stationY = 0;
+	stationLocationString = "";
+	stationList = smart.data("Powell Travel Time Stations", {"limit": 10})
+	for i in xrange(0, len(stationList)):
+		if stationList[i]["stationid"] == stationID:
+			stationLocationString = stationList[i]["latlon"]
+	stationLocationArray = stationLocationString.split(",")
+	stationX = float(re.sub("\(|\)","",stationLocationArray[0]))
+	stationY = float(re.sub("\(|\)","",stationLocationArray[1]))
+
+	results = []
+	initial = smart.data("PDX Crime Data 2013", {"limit": GET_SIZE})
+	print stationX
+	print stationY
+	for i in xrange(0, len(initial)):
+		#print stationX - 0.015, " ", stationX + 0.015 ," ", initial[i]["X Coordinate"]
+		if initial[i]["X Coordinate"] >= stationX - 0.015 and initial[i]["X Coordinate"] <= stationX + 0.015 and \
+		   initial[i]["Y Coordinate"] >= stationY - 0.02  and initial[i]["Y Coordinate"] <= stationY + 0.02:
+			results.append(initial[i])
 	count = 0;
 	morningV = 0;
 	morningNV = 0;
@@ -45,8 +67,9 @@ def getCrimeData():
 	return result;
 
 
-def crime(station, time):
-	results = getCrimeData();
+def crime(location, time):
+	stationID = stations_array[int(location) % 19];
+	results = getCrimeData(stationID);
 	return {
 		"morning" : {
 			"violent": results[0],
@@ -62,8 +85,9 @@ def crime(station, time):
 			}
 		} #score
 
+
 def main():
-	getCrimeData();
+	crime(1, 0)
 
 if __name__ == '__main__':
 	main()
