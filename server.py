@@ -90,7 +90,7 @@ class SC_Server(tornado.web.Application):
     def __init__(self):
         # The settings that tell how to server the static files
         settings = {
-            "static_path": (DIRECTORY, "site"),
+            "static_path": os.path.join(DIRECTORY, "site"),
             "cookie_secret": "KNSDF23HRGBBE8D",
             "xsrf_cookies": True,
         }
