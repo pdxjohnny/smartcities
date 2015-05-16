@@ -1,3 +1,4 @@
+import os
 import json
 import tornado.ioloop
 import tornado.web
@@ -13,7 +14,7 @@ for method in calc_methods:
     i += 1
 
 def test(station, time):
-    return {"test": "hello test"}
+    return {"test": "hello test", "station": station, "time": time}
 
 calc_score["test"] = test
 
@@ -24,7 +25,7 @@ class BaseHandler(tornado.web.RequestHandler):
 
 class HomeHandler(BaseHandler):
     def get(self):
-        self.write("Hello Index!!")
+        self.render(os.path.join(os.path.dirname(__file__)) + "site/index.html")
 
 
 class EntryHandler(BaseHandler):
@@ -42,11 +43,17 @@ class EntryHandler(BaseHandler):
 
 class Application(tornado.web.Application):
     def __init__(self):
+        settings = {
+            "static_path": os.path.join(os.path.dirname(__file__), "site"),
+            "cookie_secret": "KNSDF23HRGBBE8D",
+            "xsrf_cookies": True,
+        }
         handlers = [
             (r"/", HomeHandler),
-            (r"/api/([^/]*)", EntryHandler)
+            (r"/api/([^/]*)", EntryHandler),
+            (r'/(.*)', tornado.web.StaticFileHandler, dict(path=settings['static_path']) ),
         ]
-        super(Application, self).__init__(handlers)
+        super(Application, self).__init__(handlers, **settings)
 
 
 def start():
