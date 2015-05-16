@@ -42,7 +42,7 @@ Get data from the master server.
 api.raw_data(dataset name, callback function which with be passed the object, query params as object );
 api.raw_data("DEQ Export", function (data) { console.log(data); }, {"limit": 100} );
 ```
-Get processed data from our server.
+Get processed data from our server. This sends the request http://localhost/api/?score=crime&time=false&station=false to the server.
 
 ```javascript
 api.data(score type: (crime air, park), time: (morning, afternoon, ngiht), station id, callback function which with be passed the object );

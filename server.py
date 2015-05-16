@@ -64,6 +64,8 @@ class API_Handler(BaseHandler):
         score = self.get_argument('score', False)
         station = self.get_argument('station', False)
         time = self.get_argument('time', False)
+        # Convert to correct types
+        station, time = self.parse_station_and_time(station, time)
         # Use the score parameter to get result of the
         # function with that name in calc.
         if score:
@@ -85,6 +87,17 @@ class API_Handler(BaseHandler):
         result = json.dumps(result)
         # Return the result to the client
         self.write(unicode(result))
+
+    def parse_station_and_time(self, station, time):
+        if type(station) == unicode:
+            try:
+                station = int(station)
+            except:
+                station = 0
+        if type(time) == unicode:
+            if time == "false":
+                time = False
+        return station, time
 
 
 class SC_Server(tornado.web.Application):

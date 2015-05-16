@@ -2,7 +2,8 @@ from api import *
 import sys
 import re
 
-stations = [103052, 102082, 105082];
+GET_SIZE = 1000000
+stations_array = [103052, 102082, 105082, 200004, 200005, 200003, 200002, 200001, 104082, 101021, 101042, 101054, 101077, 101008, 200205, 200206, 200209, 200210, 123082];
 
 
 def getCrimeData(stationID):
@@ -19,7 +20,7 @@ def getCrimeData(stationID):
 	stationY = float(re.sub("\(|\)","",stationLocationArray[1]))
 
 	results = []
-	initial = smart.data("PDX Crime Data 2013", {"limit": 1000000})
+	initial = smart.data("PDX Crime Data 2013", {"limit": GET_SIZE})
 	print stationX
 	print stationY
 	for i in xrange(0, len(initial)):
@@ -67,7 +68,7 @@ def getCrimeData(stationID):
 
 
 def crime(location, time):
-	stationID = stations[int(location)];
+	stationID = stations_array[int(location) % 19];
 	results = getCrimeData(stationID);
 	return {
 		"morning" : {
@@ -84,8 +85,9 @@ def crime(location, time):
 			}
 		} #score
 
+
 def main():
-	crime(2, 1)
+	crime(1, 0)
 
 if __name__ == '__main__':
 	main()
