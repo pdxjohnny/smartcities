@@ -35,32 +35,23 @@
 
   <!-- Tab panes -->
   <div class="tab-content">
+    
+
+    
     <div role="tabpanel" class="tab-pane fade in active" id="overall">
-<iframe width="600" height="450" frameborder="0" style="border:0"
+      
+          <div class="row">
+  <!--Map Column -->
+            <div class="col-md-8">
+    <iframe width="600" height="450" frameborder="0" style="border:0"
 src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="parks">
-<iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="crime">
-<iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="emissions">
-<iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-    </div>
-  </div>
-
-
-   
-
-<div id="recommender" width="600">
-    <!-- Title and overall score -->
+            </div>
+  <div class="col-md-4">
+    
+        <!-- Title and overall score -->
     <div class = "row">
-        <div class="col-md-6" id="title">Crime Report</div>
-        <div id="score_o">N/N</div>        
+        <div class="col-md-8" id="title"><h3>Overall</h3></div>
+        <div class="col-md-4" id="score_o"><h3>N/N</h3></div>        
     </div>
     
     <!-- Description -->
@@ -69,13 +60,95 @@ src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%2
         Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
         </p>
     </div>
-    
-    <!-- Stacked Graph -->
-    <div class="row">
-        <div id="chart" style="width: 900px; height: 200px;"></div>        
+      <div class="row">
+            <div id="chart"></div>
+      </div>
     </div>
-
 </div>
+</div>
+    <div role="tabpanel" class="tab-pane fade in" id="parks">
+  <div class="row">
+  <!--Map Column -->
+            <div class="col-md-8">
+    <iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
+            </div>
+  <div class="col-md-4">
+    
+        <!-- Title and overall score -->
+    <div class = "row">
+        <div class="col-md-8" id="title"><h3>Parks</h3></div>
+        <div class="col-md-4" id="score_o"><h3>N/N</h3></div>        
+    </div>
+    
+    <!-- Description -->
+    <div class="row">
+        <p> 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+      <div class="row">
+            <div id="chart"></div>
+      </div>
+    </div>
+</div>
+      
+    </div>
+    <div role="tabpanel" class="tab-pane fade in" id="crime">
+  <div class="row">
+  <!--Map Column -->
+            <div class="col-md-8">
+    <iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
+            </div>
+  <div class="col-md-4">
+    
+        <!-- Title and overall score -->
+    <div class = "row">
+        <div class="col-md-8" id="title"><h3>Crime</h3></div>
+        <div class="col-md-4" id="score_o"><h3>N/N</h3></div>        
+    </div>
+    
+    <!-- Description -->
+    <div class="row">
+        <p> 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+      <div class="row">
+            <div id="chart"></div>
+      </div>
+    </div>
+</div>
+    </div>
+    <div role="tabpanel" class="tab-pane fade in" id="emissions">
+  <div class="row">
+  <!--Map Column -->
+            <div class="col-md-8">
+    <iframe width="600" height="450" frameborder="0" style="border:0"
+src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
+            </div>
+  <div class="col-md-4">
+    
+        <!-- Title and overall score -->
+    <div class = "row">
+        <div class="col-md-8" id="title"><h3>Emissions</h3></div>
+        <div class="col-md-4" id="score_o"><h3>N/N</h3></div>        
+    </div>
+    
+    <!-- Description -->
+    <div class="row">
+        <p> 
+        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
+        </p>
+    </div>
+      <div class="row">
+            <div id="chart"></div>
+      </div>
+    </div>
+</div>
+    </div>
+  </div>
 
 </div>
 
