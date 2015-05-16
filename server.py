@@ -10,7 +10,7 @@ calc_methods = [method for method in dir(calc) if callable(getattr(calc, method)
 calc_score = {}
 i = 0
 for method in calc_methods:
-    calc_score[method] = calc_methods[i]
+    calc_score[method] = getattr(calc, method)
     i += 1
 
 def test(station, time):
