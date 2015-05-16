@@ -49,16 +49,26 @@ def getCrimeData():
 	print "morning:  ", morningV, " ", morningNV
 	print "afternoon:", afternoonV, " ", afternoonNV
 	print "night:    ", nightV, " ", nightNV
-	result[6] = {morningV, morningNV, afternoonV, afternoonNV, nightV, nightNV};
+	result = [morningV, morningNV, afternoonV, afternoonNV, nightV, nightNV];
 	return result;
 
 
 def crime(station, time):
 	results = getCrimeData();
-	return {"morning":{"violent": results[0], "nonviolent": results[1]}
-			"afternoon":{"violent": results[2],"nonviolent": results[3]}
-			"night":{"violent": results[4],"nonviolent": results[5]}
-			} #score
+	return {
+		"morning" : {
+			"violent": results[0],
+			"nonviolent": results[1]
+			},
+		"afternoon" : {
+			"violent" : results[2],
+			"nonviolent" : results[3]
+			},
+		"night": {
+			"violent" : results[4],
+			"nonviolent" : results[5]
+			}
+		} #score
 
 def main():
 	getCrimeData();
