@@ -28,6 +28,7 @@ Score
 }
 
 .score ul li:nth-child(1) {
+  margin: 15px;
   width: 25px; height: 25px;
   background-color: rgba(0,255,0,0.4);
 }
