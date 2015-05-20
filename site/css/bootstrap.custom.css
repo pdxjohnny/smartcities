@@ -12,6 +12,14 @@ Landing Page
 /***************************
 Maps Page
 ***************************/
+#map-canvas {
+
+      height: 450px;
+      width:600px;
+      margin: 0;
+      padding: 0;
+
+}
 
 /***************************
 Score

@@ -6,7 +6,6 @@
 
 /*! normalize.css v3.0.2 | MIT License | git.io/normalize */
 
-<<<<<<< HEAD
 .search {
 
   border-radius:5%;
@@ -32,16 +31,12 @@
   opacity: 0.8;
 
 }
-
-=======
->>>>>>> 0d2343752bf6f4a600213a505cfdc8a270da37e9
 .footer {
 
     bottom: 0;
     background-color:#307eab;
     width:100%;
     height: 100px;
-<<<<<<< HEAD
     position: relative;
 
 }
@@ -55,9 +50,6 @@
 
 }
 
-=======
-    position: absolute;
-}
 
 .search {
 
@@ -65,7 +57,6 @@
     width:100%;
 
 }
->>>>>>> 0d2343752bf6f4a600213a505cfdc8a270da37e9
 html {
   font-family: sans-serif;
   -webkit-text-size-adjust: 100%;

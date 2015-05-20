@@ -4,15 +4,52 @@
     <meta charset="utf-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1">
-    <title>Smartcities &#8608; Portland</title>
+    <title>GuardJog &#8608; Portland</title>
     <link rel="stylesheet" type="text/css" href="css/bootstrap.css"/>
-    <link rel="stylesheet" href="//maxcdn.bootstrapcdn.com/font-awesome/4.3.0/css/font-awesome.min.css">
     <link rel="stylesheet" type="text/css" href="css/bootstrap.custom.css"/>
     <script src="js/jquery-1.11.3.js"></script>
     <script src="js/bootstrap.js"></script>
     <script type="text/javascript" src="https://www.google.com/jsapi"></script>
     <script src="js/api.js"></script>    
     <script src="js/chart.js"></script>
+    <script src="https://maps.googleapis.com/maps/api/js"></script>
+    <script type="text/javascript">
+
+      var citymap = {};
+        citymap['foster road portland'] = {
+          center: new google.maps.LatLng(45.476498, -122.556068),
+          range: 30
+        };
+        
+        var cityCircle;
+
+        function initialize() {
+
+          var mapOptions = {
+            zoom: 15,
+            center: new google.maps.LatLng(45.476498, -122.556068),
+            mapTypeId: google.maps.MapTypeId.TERRAIN
+          };
+
+          var map = new google.maps.Map(document.getElementById('map-canvas'), mapOptions);
+          
+          for (var city in citymap) {
+            var rangeOptions = {
+              strokeColor: '#00FF00',
+              strokeOpacity: 0.8,
+              strokeWeight: 2,
+              fillColor: '#00FF00',
+              fillOpacity: 0.35,
+              map: map,
+              center: citymap[city].center,
+              radius: Math.sqrt(citymap[city].range) * 100
+            };
+            cityCircle = new google.maps.Circle(rangeOptions);
+          }
+        }    
+        google.maps.event.addDomListener(window, 'load', initialize);
+    
+    </script>
    <!-- HTML5 shim and Respond.js for IE8 support of HTML5 elements and media queries -->
     <!-- WARNING: Respond.js doesn't work if you view the page via file:// -->
     <!--[if lt IE 9]>
@@ -24,182 +61,102 @@
 <body>
 
   <div class="page-header">
-  <div class="row">
-    <div class="text-center"><h1>SmartCities &#8608; Portland</h1></div>
-</div>
+    <div class="row">
+      <div class="text-center"><h1>GuardJog &#8608; Portland</h1></div>
+    </div>
     <div class="row">
       <div class="text-center"><h2>A Product of the Smart Cities Hackathon</h2></div>
-</div>
+    </div>
   </div>
-   
 
-    <div class="container-fluid">
+  <div class="container-fluid">
       
   <!--  Overall : Tabs -->
-      <div role="tabpanel">
+    <div role="tabpanel">
 
-        <ul class="nav nav-tabs" role="tablist">
-    <li role="presentation" class="active"><a href="#overall" aria-controls="overall" role="tab" data-toggle="tab"><i class="fa fa-repeat"></i> Overall</a></li>
-    <li role="presentation"><a href="#parks" aria-controls="parks" role="tab" data-toggle="tab"><i class="fa fa-tree"></i> Parks</a></li>
-    <li role="presentation"><a href="#crime" aria-controls="crime" role="tab" data-toggle="tab"><i class="fa fa-angellist"></i> Crime</a></li>
-    <li role="presentation"><a href="#emissions" aria-controls="emissions" role="tab" data-toggle="tab"><i class="fa fa-flip-horizontal fa-soundcloud"></i> Emissions</a></li>
-  </ul>
+      <ul class="nav nav-tabs" role="tablist">
+        <li role="presentation" class="active"><a href="#overall" aria-controls="overall" role="tab" data-toggle="tab"><i class="fa fa-repeat"></i> Overall</a></li>
+        <li role="presentation"><a href="#parks" aria-controls="parks" role="tab" data-toggle="tab"><i class="fa fa-tree"></i> Parks</a></li>
+        <li role="presentation"><a href="#crime" aria-controls="crime" role="tab" data-toggle="tab"><i class="fa fa-angellist"></i> Crime</a></li>
+        <li role="presentation"><a href="#emissions" aria-controls="emissions" role="tab" data-toggle="tab"><i class="fa fa-flip-horizontal fa-soundcloud"></i> Emissions</a></li>
+      </ul>
+    </div>
+      <div class="row">
+          <div class="col-md-8">
+            <div id="map-canvas">
+            </div>
+          </div>
+          <div class="col-md-4">
+            <div id="chart">
+            </div>
+          </div>
+        </div>
 
-  <!--  Overall : Tab panes -->
-  <div class="tab-content">
-        
-    <div role="tabpanel" class="tab-pane fade in active">
-      
-          <div class="row">
-  <!-- Overall : Map Column -->
-            <div class="col-md-8">
-    <iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-            </div>
-  <div class="col-md-4">
-    
-  
-    
-    
-        <!-- Overall : Title and overall score -->
-    <div class = "row well">
-        <div class="col-md-8" id="overall">
-          <h3>Overall :</h3></div>
-        <div class="col-md-4 score" id="score_overall">
-          <ul class="pull-left"><li>2</li></ul><h3 class="pull-left">100</h3>
+    <div class="tab-content">  
+      <div role="tabpanel" class="tab-pane fade in active" id="overall">
+         <div class = "row well">
+          <div class="col-md-8" id="overall">
+            <h3>Overall :</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+          </div>
+          <div class="col-md-4 score" id="score_overall overall">
+            <ul class="pull-left">
+              <li>2</li>
+            </ul>
+            <h3 class="pull-left">100</h3>
+          </div>
         </div>
-    </div>
-    
-    <!-- Overall : Description -->
-    <div class="row">
-        <p> 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        </p>
-    </div>
-      <div class="row">
-            <div id="chart_overall"></div>
       </div>
-    </div>
-</div>
-</div>
-    <div role="tabpanel" class="tab-pane fade in" id="parks">
-  <div class="row">
-  <!--Parks : Map Column -->
-            <div class="col-md-8">
-    <iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-            </div>
-  <div class="col-md-4">
-    
-        <!-- Parks : Title and overall score -->
-    <div class = "row well">
-        <div class="col-md-8">
-          <h3>Parks :</h3></div>
-        <div class="col-md-4 score" id="score_parks">
-          <ul class="pull-left"><li>2</li></ul><h3 class="pull-left">100</h3>
-        </div>
-    </div>
-    
-    <!--Parks : Description -->
-    <div class="row">
-        <p> 
-        Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-    </div>
-      <div class="row">
-            <div id="chart_parks"></div>
-      </div>
-    </div>
-</div>
-      
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="crime">
-  <div class="row">
-  <!--Crime : Map Column -->
-            <div class="col-md-8">
-    <iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-            </div>
-  <div class="col-md-4">
-    
-        <!--Crime : Title and overall score -->
-    <div class = "row well">
-        <div class="col-md-8">
-          <h3>Crime :</h3></div>
-        <div class="col-md-4 score" id="score_crime">
-          <ul class="pull-left"><li>2</li></ul><h3 class="pull-left">100</h3>
-        </div>
-    </div>
-    
-    <!--Crime :  Description -->
-    <div class="row">
-        <p> 
-          Duis aute irure dolor in reprehenderit in voluptate velit esse cillum dolore eu fugiat nulla pariatur. Excepteur sint occaecat cupidatat non proident, sunt in culpa qui officia deserunt mollit anim id est laborum.
-        </p>
-    </div>
-      <div class="row">
-            <div id="chart_crime"></div>
-      </div>
-    </div>
-</div>
-    </div>
-    <div role="tabpanel" class="tab-pane fade in" id="emissions">
-  <div class="row">
-  <!--Emissions : Map Column -->
-            <div class="col-md-8">
-    <iframe width="600" height="450" frameborder="0" style="border:0"
-src="https://www.google.com/maps/embed/v1/place?q=Southeast%20Foster%20Road%2C%20Portland%2C%20OR%2C%20United%20States&key=AIzaSyAm-_PcoS0OVopdLs_3BdYkeh6sDTZqRQg"></iframe>
-            </div>
-  <div class="col-md-4">
-    
-        <!-- Emissions : Title and overall score -->
-    <div class = "row well">
-        <div class="col-md-8">
-          <h3>Emissions :</h3></div>
-        <div class="col-md-4 score" id="score_emissions">
-          <ul class="pull-left"><li>2</li></ul><h3 class="pull-left">100</h3>
-        </div>
-    </div>
-    <!-- Emissions : Description -->
-    <div class="row">
-        <p> 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        </p>
-    </div>
-      <div class="row">
-            <div id="chart_emissions"></div>
-      </div>
-    </div>
-</div>
-    </div>
-  </div>
 
-</div>
-  </div>
-  
-  
-  <!-- Overall : Title and overall score -->
-    <div class="panel panel-default">
-  <div class="panel-heading">
-    <h3 class="panel-title">Overall :</h3>
-            <div class="score" id="score_overall">
-          <ul><li>2</li></ul><h3>100</h3>
+      <div role="tabpanel" class="tab-pane fade in active" id="parks">
+        <div class = "row well">
+          <div class="col-md-8" id="parks">
+            <h3>Parks :</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+          </div>
+          <div class="col-md-4 score" id="score_parks">
+            <ul class="pull-left">
+              <li>2</li>
+            </ul>
+            <h3 class="pull-left">99</h3>
+          </div>
         </div>
-  </div>
-</br>
-          <!-- Overall : Description -->
-  <div class="panel-body">
-        <p> 
-        Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
-        </p>
-    
-          <div class="row">
-            <div id="chart_overall"></div>
       </div>
-  </div>
-</div>
-  
-  
+
+      <div role="tabpanel" class="tab-pane fade in active" id="crime">
+        <div class = "row well">
+          <div class="col-md-8" id="crime">
+            <h3>Crime :</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+          </div>
+          <div class="col-md-4 score" id="score_crime">
+            <ul class="pull-left">
+              <li>2</li>
+            </ul>
+            <h3 class="pull-left">99</h3>
+          </div>
+        </div>
+      </div>
+
+      <div role="tabpanel" class="tab-pane fade in active" id="emissions">
+        <div class = "row well">
+          <div class="col-md-8" id="emissions">
+            <h3>Emissions :</h3>
+            <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. Ut enim ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut aliquip ex ea commodo consequat. 
+            </p>
+          </div>
+          <div class="col-md-4 score" id="score_emissions">
+            <ul class="pull-left">
+              <li>2</li>
+            </ul>
+            <h3 class="pull-left">99</h3>
+          </div>
+        </div>
+      </div>
+
 </body>
 
 </html>
